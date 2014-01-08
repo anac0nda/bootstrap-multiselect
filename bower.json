@@ -1,9 +1,0 @@
-{
-  "name": "https://github.com/n-tanchev/bootstrap-multiselect.git",
-  "main": [
-    "./js/bootstrap-multiselect.js",
-    "./css/bootstrap-multiselect.css"
-  ],
-  "dependencies": {
-  }
-}
