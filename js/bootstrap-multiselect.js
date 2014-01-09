@@ -15,19 +15,15 @@
         ko.bindingHandlers.multiselect = {
             init : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {},
             update : function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
-                var config = ko.utils.unwrapObservable(valueAccessor());
-		var selectOptions = allBindingsAccessor().options();
-		var ms = $(element).data('multiselect');
-
-		if (!ms) {
-		   $(element).multiselect(config);
-		}
-		else {
-		   ms.updateOriginalOptions();
-		   if (selectOptions && selectOptions.length !== ms.originalOptions.length) {
-		      $(element).multiselect('rebuild');
-		   }
-		}
+                var ms = $(element).data('multiselect');
+                var selectOptions = allBindingsAccessor().options();
+                if (!ms) {
+                    $(element).multiselect(ko.utils.unwrapObservable(valueAccessor()));
+                }
+                else if (selectOptions && allBindingsAccessor().options().length !== ms.originalOptions.length) {
+                    ms.updateOriginalOptions();
+                    $(element).multiselect('rebuild');
+                }
             }
         };
     }
